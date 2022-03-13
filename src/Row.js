@@ -22,7 +22,7 @@ const opts={
     Height:"390",
     width:"100%",
     playerVars:{
-        autoplay:0,
+        autoplay:1,
     }
 }
 const handleClick = (movie) => {
@@ -30,7 +30,7 @@ const handleClick = (movie) => {
     if (trailerUrl) {
       setTrailerUrl('')
     } else {
-      movieTrailer(movie?.title || "")
+      movieTrailer(movie?.title || movie.name || movie?.original_title || "")
         .then(url => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get('v'));
